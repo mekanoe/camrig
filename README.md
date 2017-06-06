@@ -71,7 +71,8 @@ To run your camera rig, simply use the `.run()` method on a CamRig instance. Thi
       duration: 7000,
       pauseDelta: +1500
     },
-    { pos: new Vector3(-600, 400, 3000),
+    { 
+      pos: new Vector3(-600, 400, 3000),
       rot: new Vector3(-90, 0, 90),
       effect: 'SwitchSceneNeutral',
       duration: 7000

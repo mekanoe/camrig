@@ -133,7 +133,8 @@ function presetSimpleSkyZoom (initialCam, endCamera) { // eslint-disable-line no
       duration: 7000,
       pauseDelta: +1500
     },
-    { pos: new Vector3(ecPos.X, ecPos.Y, 3000),
+    { 
+      pos: new Vector3(ecPos.X, ecPos.Y, 3000),
       rot: new Vector3(-90, 0, icRot),
       effect: 'SwitchSceneNeutral',
       duration: 7000
@@ -169,6 +170,6 @@ function __requireModuleClasses () { // eslint-disable-line no-unused-vars
   }
 }
 
-function camRig () {
-  return CamRig
+function newCamRig (args) {
+  return new CamRig(args)
 }
