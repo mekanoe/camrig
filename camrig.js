@@ -17,6 +17,10 @@ let locked = false
 
 class CamRig {
   constructor (...cameraMoveset) {
+    if (Array.isArray(cameraMoveset[0])) {
+      cameraMoveset = cameraMoveset[0]
+    }
+
     this.moveset = new Set(cameraMoveset)
   }
 
@@ -82,12 +86,12 @@ class CamRig {
       currentCamera = newCam
 
       // Wait for the world to end, do it again.
-      API.sendChatMessage(`waiting for ${duration}ms with ${pauseDelta}ms added`)
+      // API.sendChatMessage(`waiting for ${duration}ms with ${pauseDelta}ms added`)
       await this.wait(duration + pauseDelta)
 
       // Are we resetting?
       if (reset) {
-        API.sendChatMessage('STOP')
+        // API.sendChatMessage('STOP')
         active = false
         API.callNative('_STOP_ALL_SCREEN_EFFECTS')
         return null
@@ -103,7 +107,7 @@ class CamRig {
     return new Promise((resolve, reject) => {
       const time = Date.now() + duration
 
-      API.sendChatMessage(`currently ${+Date.now()}, waiting for ${time} (${duration})`)
+      // API.sendChatMessage(`currently ${+Date.now()}, waiting for ${time} (${duration})`)
 
       nextStep = {
         time,
@@ -163,4 +167,8 @@ function __requireModuleClasses () { // eslint-disable-line no-unused-vars
   return {
     CamRig
   }
+}
+
+function camRig () {
+  return CamRig
 }
